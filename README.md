@@ -1,25 +1,47 @@
 # Robofriends
 
-A small React app that fetches a list of sample users and displays them as robot cards. Search filters the list by name.
+Robofriends is a small React application that fetches sample user records and presents them as robot profile cards. Search filters the loaded cards by name. It is a frontend practice project using placeholder data, not a data-analysis project.
+
+## Technologies
+
+- React 17 function components and Hooks (`useState`, `useEffect`)
+- Fetch API with JSONPlaceholder's public sample-users endpoint
+- RoboHash image URLs and Tachyons utility classes
+- Create React App 4 for development, tests, and production builds
+- React Testing Library for component-level behavior checks
+
+## How it works
+
+1. When the app loads, it requests the sample users from JSONPlaceholder.
+2. While the request is pending, the page announces a loading state.
+3. On success, the app renders robot cards and filters them client-side as the search field changes.
+4. If the request fails, the page reports the problem and offers a retry. An empty list and a search with no matches have separate messages.
 
 ## Run locally
 
-Requires Node.js and npm.
+Requires Node.js and npm. From the repository root:
 
 ```bash
-npm install
+npm ci
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The app uses the public JSONPlaceholder sample-users endpoint and RoboHash images, so an internet connection is needed for the remote data and images.
+Open [http://localhost:3000](http://localhost:3000). The app needs an internet connection to load the sample users and remote images.
 
-## Current behavior
+## Check the project
 
-- Shows a loading state while the user list is fetched.
-- Reports request and response errors and lets the user retry.
-- Handles an empty result list and a search with no matches.
-- Gives the search field an accessible label and announces result counts.
+```bash
+npm test -- --watchAll=false
+npm run build
+```
 
-## Known limits and next improvements
+## What this project demonstrates
 
-This is a frontend learning demo, not a data-science project. The user records are placeholder data, and the search only filters names already loaded in the browser. Useful next steps are component tests for loading, error, filtering, and empty states; pagination or server-side search for larger datasets; and a project-specific deployment guide if the app is published.
+- Managing loading, success, empty, and error states for an asynchronous request
+- Keeping search input and results in React state
+- Making a form control accessible with a visible label and announcing status updates
+- Rendering a list with stable record keys
+
+## Limitations and next steps
+
+JSONPlaceholder provides synthetic placeholder records, and the search only covers the small list already loaded in the browser. RoboHash images are generated from remote URLs. The app does not authenticate users, persist changes, or analyze real-world data. A useful next step is to expand the component tests and document a deployment only after verifying the published site.
